@@ -1,4 +1,5 @@
 #![no_std]
+#![doc(html_root_url = "https://docs.rs/pebble-sys/0.0.1")]
 #![feature(extern_types)]
 #![warn(clippy::pedantic)]
 #![allow(clippy::match_bool)]
