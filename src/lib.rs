@@ -282,8 +282,6 @@ pub mod user_interface {
 			};
 
 			/// [`NumberWindow`] callbacks.
-			///
-			/// [`NumberWindow`]: ./index.html
 			#[repr(C)]
 			pub struct NumberWindowCallbacks {
 				/// Called as the value is incremented.
@@ -295,8 +293,6 @@ pub mod user_interface {
 			}
 
 			/// A [`NumberWindow`] callback.
-			///
-			/// [`NumberWindow`]: ./index.html
 			pub type NumberWindowCallback =
 				for<'a> extern "C" fn(number_window: &'a mut NumberWindow<'a>, context: &mut void);
 
