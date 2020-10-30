@@ -51,6 +51,18 @@ pub mod foundation {
 			);
 		}
 	}
+
+	pub mod resources {
+		use crate::standard_c::memory::void;
+
+		#[repr(transparent)]
+		pub struct ResHandle(*const void);
+
+		extern "C" {
+			pub fn resource_get_handle(resource_id: u32) -> ResHandle;
+			pub fn resource_size(h: ResHandle) -> usize;
+		}
+	}
 }
 
 pub mod graphics {
