@@ -132,7 +132,7 @@ pub mod user_interface {
 
 			pub fn layer_create(frame: GRect) -> *mut Layer;
 			pub fn layer_create_with_data(frame: GRect, data_size: usize) -> *mut Layer;
-			pub fn layer_destroy(layer: NonNull<Layer>);
+			pub fn layer_destroy(layer: &'static mut Layer);
 			pub fn layer_mark_dirty(layer: NonNull<Layer>);
 			pub fn layer_set_update_proc(
 				layer: NonNull<Layer>,
@@ -229,7 +229,7 @@ pub mod user_interface {
 			pub fn window_get_root_layer(window: &Window) -> &mut Layer;
 
 			pub fn window_set_background_color(window: &mut Window, background_color: GColor8);
-			pub fn window_is_loaded(window: &Window) -> bool;
+			pub fn window_is_loaded(window: &mut Window) -> bool;
 			pub fn window_set_user_data(window: &mut Window, data: *mut void);
 			pub fn window_get_user_data(window: &Window) -> *mut void;
 			pub fn window_single_click_subscribe(button_id: ButtonId, handler: ClickHandler);
