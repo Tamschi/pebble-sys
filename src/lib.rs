@@ -24,6 +24,11 @@ fn panic(_info: &PanicInfo) -> ! {
 	loop {}
 }
 
+extern "C" {
+	/// Marker type for unsized newtypes.
+	type ExternData;
+}
+
 pub mod foundation {
 	pub mod app {
 		extern "C" {
@@ -267,7 +272,10 @@ pub mod user_interface {
 			//! TODO: Images
 
 			use super::Window;
-			use crate::standard_c::memory::{c_str, void};
+			use crate::{
+				standard_c::memory::{c_str, void},
+				ExternData,
+			};
 			use core::{
 				marker::PhantomData,
 				ops::{Deref, DerefMut},
@@ -299,11 +307,9 @@ pub mod user_interface {
 			/// [`DerefMut`]: https://doc.rust-lang.org/stable/core/ops/trait.DerefMut.html
 			/// [`Window`]: ../foreigntype.Window.html
 			#[repr(transparent)]
-			pub struct NumberWindow<'a>(PhantomData<&'a mut ()>, NumberWindowExtern);
+			pub struct NumberWindow<'a>(PhantomData<&'a ()>, ExternData);
 
 			extern "C" {
-				type NumberWindowExtern;
-
 				pub fn number_window_create<'a>(
 					label: &'a c_str,
 					callbacks: NumberWindowCallbacks,
