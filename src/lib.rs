@@ -299,7 +299,7 @@ pub mod user_interface {
 			/// [`DerefMut`]: https://doc.rust-lang.org/stable/core/ops/trait.DerefMut.html
 			/// [`Window`]: ../foreigntype.Window.html
 			#[repr(transparent)]
-			pub struct NumberWindow<'a>(PhantomData<&'a ()>, NumberWindowExtern);
+			pub struct NumberWindow<'a>(PhantomData<&'a mut ()>, NumberWindowExtern);
 
 			extern "C" {
 				type NumberWindowExtern;
@@ -348,13 +348,14 @@ pub mod user_interface {
 
 	pub mod window_stack {
 		use super::window::Window;
+		use core::ptr::NonNull;
 
 		extern "C" {
-			pub fn window_stack_push(window: &mut Window, animated: bool);
-			pub fn window_stack_pop(animated: bool) -> *mut Window;
+			pub fn window_stack_push(window: &'static mut Window, animated: bool);
+			pub fn window_stack_pop(animated: bool) -> Option<NonNull<Window>>;
 			pub fn window_stack_pop_all(animated: bool);
 			pub fn window_stack_remove(window: &mut Window, animated: bool) -> bool;
-			pub fn window_stack_get_top_window() -> *mut Window;
+			pub fn window_stack_get_top_window() -> Option<NonNull<Window>>;
 			pub fn window_stack_contains_window(window: &mut Window) -> bool;
 		}
 	}
