@@ -5,7 +5,7 @@
 [![Docs.rs](https://docs.rs/pebble-sys/badge.svg)](https://docs.rs/crates/pebble-sys)
 
 ![Rust nightly-2020-10-30](https://img.shields.io/static/v1?logo=Rust&label=&message=nightly-2020-10-30&color=grey)
-[![Build Status](https://travis-ci.com/Tamschi/pebble-sys.svg?branch=develop)](https://travis-ci.com/Tamschi/pebble-sys/branches)
+[![Build Status](https://travis-ci.com/Tamschi/pebble-sys.svg?branch=unstable)](https://travis-ci.com/Tamschi/pebble-sys/branches)
 ![Crates.io - License](https://img.shields.io/crates/l/pebble-sys/0.0.1)
 
 [![GitHub](https://img.shields.io/static/v1?logo=GitHub&label=&message=%20&color=grey)](https://github.com/Tamschi/pebble-sys)

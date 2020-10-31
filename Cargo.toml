@@ -21,14 +21,13 @@ include = [
 	"README.md",
 	"thumbv7m-pebble-eabi.json",
 ]
-publish = false
 
 autotests = false
 autobenches = false
 autoexamples = false
 
 [badges]
-travis-ci = { repository = "Tamschi/pebble-sys", branch = "develop" }
+travis-ci = { repository = "Tamschi/pebble-sys", branch = "unstable" }
 is-it-maintained-issue-resolution = { repository = "Tamschi/pebble-sys" }
 is-it-maintained-open-issues = { repository = "Tamschi/pebble-sys" }
 maintenance = { status = "experimental" }
