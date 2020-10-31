@@ -19,6 +19,10 @@ I recommend using the high-level wrapper in [`pebble-skip`] instead, since it pr
 
 [`pebble-skip`]: https://github.com/Tamschi/pebble-skip
 
+This crate is still heavily work in progress, so expect frequent breaking changes and missing functionality before 0.1. If you'd like me to prioritise a specific API, please [file a feature request on GitHub].
+
+[file a feature request on GitHub]: https://github.com/Tamschi/pebble-sys/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=
+
 ## Installation
 
 Please use [cargo-edit](https://crates.io/crates/cargo-edit) to always add the latest version of this library:

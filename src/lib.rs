@@ -1,3 +1,7 @@
+//! Documentation for this crate is work in progress.
+//!
+//! For now, please see the C API documentation at <https://developer.rebble.io/developer.pebble.com/docs/c/index.html> for more information.
+
 #![no_std]
 #![doc(html_root_url = "https://docs.rs/pebble-sys/0.0.1")]
 #![feature(extern_types)]
