@@ -521,7 +521,7 @@ pub mod standard_c {
 		}
 
 		impl c_str {
-			/// Interprets a zero-terminated Rust [`str`] as [`c_str`].
+			/// Interprets a zero-terminated Rust [`prim@str`] as [`c_str`].
 			///
 			/// # Errors
 			///

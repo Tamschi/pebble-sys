@@ -5,6 +5,7 @@
 TODO: Date
 
 * Updated README with more information about the build process
+* Small documentation fixes
 
 ## 0.0.1
 
