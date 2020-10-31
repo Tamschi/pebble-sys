@@ -8,7 +8,7 @@ stages:
   - test
 script:
   - export RUST_TARGET_PATH=$PWD
-  - cargo +$TRAVIS_RUST_VERSION build
+  - cargo +$TRAVIS_RUST_VERSION build --target thumbv7m-pebble-eabi
 jobs:
   include:
     # - stage: ensure format
@@ -21,6 +21,6 @@ jobs:
       script:
         - rustup toolchain install nightly --profile minimal --component clippy
         - export RUST_TARGET_PATH=$PWD
-        - RUSTFLAGS='-D warnings' cargo +nightly build --all-targets
+        - RUSTFLAGS='-D warnings' cargo +nightly build --target thumbv7m-pebble-eabi
   fast_finish: true
 cache: cargo
