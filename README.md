@@ -19,6 +19,10 @@ I recommend using the high-level wrapper in [`pebble-skip`] instead, since it pr
 
 [`pebble-skip`]: https://github.com/Tamschi/pebble-skip
 
+The Pebble SDK isn't automatically included, but you can build a statically linked library and the use the official toolchain to link and package the watch app. [See here for an example.]
+
+[See here for an example.]: https://github.com/Tamschi/pebble-test
+
 This crate is still heavily work in progress, so expect frequent breaking changes and missing functionality before 0.1. If you'd like me to prioritise a specific API, please [file a feature request on GitHub].
 
 [file a feature request on GitHub]: https://github.com/Tamschi/pebble-sys/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=
