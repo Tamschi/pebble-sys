@@ -104,6 +104,13 @@ pub mod graphics {
 			pub type GBitmap;
 			pub type GBitmapSequence;
 			pub type GContext;
+
+			pub fn gbitmap_create_from_png_data(
+				png_data: *const u8,
+				png_data_size: usize,
+			) -> Option<&'static mut GBitmap>;
+			pub fn gbitmap_destroy(bitmap: &'static mut GBitmap);
+			pub fn gbitmap_get_bounds(bitmap: &GBitmap) -> GRect;
 		}
 
 		pub mod color_definitions {
@@ -172,7 +179,7 @@ pub mod user_interface {
 			pub fn layer_get_window(layer: NonNull<Layer>) -> *mut Window;
 			pub fn layer_remove_from_parent(child: NonNull<Layer>);
 			pub fn layer_remove_child_layers(parent: NonNull<Layer>);
-			pub fn layer_add_child(parent: NonNull<Layer>, child: NonNull<Layer>);
+			pub fn layer_add_child(parent: &mut Layer, child: &'static mut Layer);
 			pub fn layer_insert_below_sibling(
 				layer_to_insert: NonNull<Layer>,
 				below_sibling_layer: NonNull<Layer>,
@@ -188,6 +195,34 @@ pub mod user_interface {
 			pub fn layer_get_data(layer: NonNull<Layer>) -> NonNull<void>;
 
 		//TODO: #define GRect layer_get_unobstructed_bounds(const Layer* layer);
+		}
+
+		pub mod bitmap_layer {
+			use super::Layer;
+			use crate::{
+				graphics::graphics_types::{GBitmap, GRect},
+				ExternData,
+			};
+			use core::marker::PhantomData;
+
+			#[repr(transparent)]
+			pub struct BitmapLayer<'a>(PhantomData<&'a ()>, ExternData);
+
+			extern "C" {
+				#[must_use]
+				pub fn bitmap_layer_create<'a>(frame: GRect) -> Option<&'a mut BitmapLayer<'a>>;
+				pub fn bitmap_layer_destroy(bitmap_layer: &'static mut BitmapLayer);
+				pub fn bitmap_layer_get_layer<'a>(bitmap_layer: &'a BitmapLayer<'a>) -> &'a Layer;
+				#[allow(clashing_extern_declarations)]
+				#[link_name = "bitmap_layer_get_layer"]
+				pub fn bitmap_layer_get_layer_mut<'a>(
+					bitmap_layer: &'a mut BitmapLayer<'a>,
+				) -> &'a mut Layer;
+				pub fn bitmap_layer_set_bitmap<'a>(
+					bitmap_layer: &mut BitmapLayer<'a>,
+					bitmap: &'a GBitmap,
+				);
+			}
 		}
 	}
 
