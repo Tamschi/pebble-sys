@@ -191,7 +191,7 @@ pub mod user_interface {
 			pub fn layer_get_clips(layer: NonNull<Layer>) -> bool;
 			pub fn layer_get_data(layer: NonNull<Layer>) -> NonNull<void>;
 
-		//TODO: #define GRect layer_get_unobstructed_bounds(const Layer* layer);
+			//TODO: #define GRect layer_get_unobstructed_bounds(const Layer* layer);
 		}
 	}
 
